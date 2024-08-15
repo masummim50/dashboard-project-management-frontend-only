@@ -48,19 +48,6 @@ export const inititalTodos: itemType[] = [
     members: [1],
     comments: 3,
   },
-  {
-    id: uuidv4(),
-    title: "Write documentation for API",
-    description: "Document the new API endpoints.",
-    status: "todo",
-    tags: [
-      { tag: "bug", color: 6 },
-      { tag: "priority", color: 5 },
-    ],
-    date: "2024-08-14T12:00:00Z",
-    members: [0, 9],
-    comments: 4,
-  },
 ];
 
 export const initialInProgressItems: itemType[] = [
@@ -103,11 +90,14 @@ export const initialInProgressItems: itemType[] = [
     members: [6, 8, 3],
     comments: 3,
   },
+];
+
+export const initialUnderReviewItems: itemType[] = [
   {
     id: uuidv4(),
     title: "Write documentation for API",
     description: "Document the new API endpoints.",
-    status: "in-progress",
+    status: "under-review",
     tags: [
       { tag: "bug", color: 4 },
       { tag: "priority", color: 7 },
@@ -117,6 +107,18 @@ export const initialInProgressItems: itemType[] = [
     comments: 4,
   },
 ];
-
-export const initialUnderReviewItems: itemType[] = [];
-export const initialReadyItems: itemType[] = [];
+export const initialReadyItems: itemType[] = [
+  {
+    id: uuidv4(),
+    title: "Write documentation for API",
+    description: "Document the new API endpoints.",
+    status: "ready",
+    tags: [
+      { tag: "bug", color: 6 },
+      { tag: "priority", color: 5 },
+    ],
+    date: "2024-08-14T12:00:00Z",
+    members: [0, 9],
+    comments: 4,
+  },
+];

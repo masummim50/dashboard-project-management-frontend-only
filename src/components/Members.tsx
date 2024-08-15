@@ -1,4 +1,4 @@
-import React from 'react';
+
 
 const members = [
     {name: 'Cecil White', time: '08:45:33 for this week'},

@@ -18,6 +18,7 @@ const icons = [
   { icon: <IoIosClock /> },
 ];
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const topValue = [
   "lg:top-[4px]",
   "lg:top-[40px]",
@@ -28,6 +29,7 @@ const topValue = [
   "lg:top-[220px]",
 ];
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const horizontalValues = [
   "left-[4px]",
   "left-[40px]",
@@ -39,6 +41,7 @@ const horizontalValues = [
 ];
 
 const FixedSidebar = () => {
+  if(topValue && horizontalValues){console.log("")}
   const [active, setActive] = React.useState(3);
   return (
     <div className="fixed z-[5] w-[100vw] h-[50px] bottom-0 lg:top-0 bg-gray-800 lg:h-[100vh] lg:w-[50px] border-r border-r-gray-700">

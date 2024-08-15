@@ -26,14 +26,16 @@ function moveItem(
   const updatedContainers = [...containers];
 
   // Extract the item from the old container
-  const [item] = updatedContainers[oldContainerIndex].items.splice(itemIndex, 1);
+  const [item] = updatedContainers[oldContainerIndex].items.splice(
+    itemIndex,
+    1
+  );
 
   // Push the item into the new container
   updatedContainers[newContainerIndex].items.push(item);
 
   return updatedContainers;
 }
-
 
 export type todoType = {
   id: number;
@@ -57,7 +59,8 @@ const containers = [
   { id: 202, type: "in-progress", items: [] },
 ];
 
-function removeElementAtIndex(arr: any[], index: number) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function removeElementAtIndex(arr: any[], index: number) {
   if (index >= 0 && index < arr.length) {
     arr.splice(index, 1);
   } else {
@@ -107,10 +110,14 @@ const New = () => {
       const activeContainerIndex = data.findIndex(
         (c) => c.id === active.data.current?.containerId
       );
-      const overContainerId = over.id;
       const overContainerIndex = over.data?.current?.index;
 
-      const updatedContainer = moveItem(data, activeIndex, activeContainerIndex, overContainerIndex);
+      const updatedContainer = moveItem(
+        data,
+        activeIndex as number,
+        activeContainerIndex,
+        overContainerIndex
+      );
       setData([...updatedContainer]);
 
       // delete active item from container
@@ -119,35 +126,40 @@ const New = () => {
 
     // handle drag item to item
     if (activeType === "item" && overType === "item") {
-      // two things can happen the below is if the container id is same 
+      // two things can happen the below is if the container id is same
       // if container id is not same then move the item to the new container
-      if(active.data.current?.containerId === over.data.current?.containerId){
-        
-      const activeContainerIndex = data.findIndex(
-        (c) => c.id === active.data.current?.containerId
-      );
-      const sortedArray = arrayMove(
-        data[activeContainerIndex].items,
-        activeIndex,
-        over.data.current?.index
-      );
-      setData((data) => [
-        ...data.slice(0, activeContainerIndex),
-        { ...data[activeContainerIndex], items: sortedArray },
-        ...data.slice(activeContainerIndex + 1),
-      ]);
-      
-    }else{
-      const activeContainerIndex = data.findIndex(
-        (c) => c.id === active.data.current?.containerId
-      );
-      
-      const overContainerId = over.data?.current?.containerId;
-      const overContainerIndex = data.findIndex(c=> c.id === overContainerId);
+      if (active.data.current?.containerId === over.data.current?.containerId) {
+        const activeContainerIndex = data.findIndex(
+          (c) => c.id === active.data.current?.containerId
+        );
+        const sortedArray = arrayMove(
+          data[activeContainerIndex].items,
+          activeIndex as number,
+          over.data.current?.index
+        );
+        setData((data) => [
+          ...data.slice(0, activeContainerIndex),
+          { ...data[activeContainerIndex], items: sortedArray },
+          ...data.slice(activeContainerIndex + 1),
+        ]);
+      } else {
+        const activeContainerIndex = data.findIndex(
+          (c) => c.id === active.data.current?.containerId
+        );
 
-      const updatedContainer = moveItem(data, activeIndex, activeContainerIndex, overContainerIndex);
-      setData([...updatedContainer]);
-    }
+        const overContainerId = over.data?.current?.containerId;
+        const overContainerIndex = data.findIndex(
+          (c) => c.id === overContainerId
+        );
+
+        const updatedContainer = moveItem(
+          data,
+          activeIndex as number,
+          activeContainerIndex,
+          overContainerIndex
+        );
+        setData([...updatedContainer]);
+      }
       // s
     }
   };
@@ -188,6 +200,7 @@ const New = () => {
             />
           ) : (
             <NewItem
+              containerId={4}
               item={activeData as todoType}
               index={activeIndex as number}
               activeId={23424}

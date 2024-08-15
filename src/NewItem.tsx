@@ -1,5 +1,5 @@
 import { useSortable } from '@dnd-kit/sortable';
-import React from 'react';
+
 import { todoType } from './New';
 import {CSS} from '@dnd-kit/utilities'
 

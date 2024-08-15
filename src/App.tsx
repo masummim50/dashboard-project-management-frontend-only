@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import Dnd from "./components/dnd/Dnd";
 import FixedSidebar from "./components/FixedSidebar";
 import Header from "./components/Header";
-import SideBar from "./components/SideBar";
 import SideBarClone from "./components/SideBarClone";
 
 const App = () => {
